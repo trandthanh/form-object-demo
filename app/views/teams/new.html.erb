@@ -1,0 +1,19 @@
+<%= simple_form_for @form do |f| %>
+  <%= f.input :name %>
+  <%= f.input :coach %>
+  <%= f.input :nationality %>
+
+  <%= f.fields_for :players do |p| %>
+    <%= p.input :first_name %>
+    <%= p.input :last_name %>
+    <%= p.input :nationality %>
+  <% end %>
+
+  <%= f.fields_for :players do |p| %>
+    <%= p.input :first_name %>
+    <%= p.input :last_name %>
+    <%= p.input :nationality %>
+  <% end %>
+
+  <%= f.submit :Submit %>
+<% end %>
