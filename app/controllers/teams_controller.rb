@@ -1,4 +1,8 @@
 class TeamsController < ApplicationController
+  def index
+    @teams = Team.all
+  end
+
   def new
     team = Team.new
     team.players.build
@@ -15,7 +19,6 @@ class TeamsController < ApplicationController
     else
       render :new
     end
-
   end
 
   private
