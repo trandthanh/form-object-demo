@@ -1,30 +1,12 @@
-<div class="container">
-  <%= simple_form_for @form do |f| %>
-    <h3>Team</h3>
+<%= form_for @form do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
-    <div>
-      <%= f.input :name %>
-      <%= f.input :coach %>
-      <%= f.input :nationality %>
-    </div>
+  <%= f.input :coach %>
+  <%= f.text_field :coach %>
 
-    <div>
-      <h4>Player 1</h4>
-      <%= f.simple_fields_for :players do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
-      <% end %>
+  <%= f.input :nationalit %>
+  <%= f.text_field :nationality %>
 
-      <h4>Player 2</h4>
-      <%= f.simple_fields_for :players do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
-      <% end %>
-    </div>
-
-
-    <%= f.submit :Submit %>
-  <% end %>
-</div>
+  <%= f.button :submit, 'Send' %>
+<% end %>

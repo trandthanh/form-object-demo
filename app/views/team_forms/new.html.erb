@@ -1,0 +1,22 @@
+<div class="container">
+  <%= simple_form_for @form do |f| %>
+    <h3>Team</h3>
+
+    <div>
+      <%= f.input :name %>
+      <%= f.input :coach %>
+      <%= f.input :nationality %>
+    </div>
+
+    <div>
+      <h4>Player</h4>
+      <%= f.simple_fields_for :players do |player_form| %>
+        <%= player_form.input :first_name %>
+        <%= player_form.input :last_name %>
+        <%= player_form.input :nationality %>
+      <% end %>
+    </div>
+
+    <%= f.submit :Submit %>
+  <% end %>
+</div>
