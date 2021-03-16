@@ -1,19 +1,20 @@
-<% @teams.each do |t| %>
-  <div>
-    <h1><%= t.name %></h1>
-    <p>Coach: <%= t.coach %></p>
-    <p>Nationality: <%= t.nationality %></p>
-  </div>
+<div class="container">
+  <% @teams.each do |t| %>
+    <div>
+      <h1><%= t.name %></h1>
+      <p>Coach: <%= t.coach %></p>
+      <p>Nationality: <%= t.nationality %></p>
 
-  <ul>
-    <% t.players.each do |p| %>
-      <li>
-        <%= p.first_name %>
-        <%= p.last_name %>
-        <%= p.nationality %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+      <ul>
+        <% t.players.each do |p| %>
+          <li>
+            <%= p.first_name %> <%= p.last_name %> (<%= p.nationality %>)
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to "Create a new team", new_team_path %>
+  <%= link_to "Create a new team", new_team_path, class: "btn btn-primary" %>
+</div>
+
