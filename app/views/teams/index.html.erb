@@ -1,0 +1,19 @@
+<% @teams.each do |t| %>
+  <div>
+    <h1><%= t.name %></h1>
+    <p>Coach: <%= t.coach %></p>
+    <p>Nationality: <%= t.nationality %></p>
+  </div>
+
+  <ul>
+    <% t.players.each do |p| %>
+      <li>
+        <%= p.first_name %>
+        <%= p.last_name %>
+        <%= p.nationality %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to "Create a new team", new_team_path %>
