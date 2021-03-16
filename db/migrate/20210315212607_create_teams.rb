@@ -4,7 +4,6 @@ class CreateTeams < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :coach
       t.string :nationality
-      t.string :age_category
 
       t.timestamps
     end

@@ -19,11 +19,6 @@ ActiveRecord::Schema.define(version: 2021_03_15_213211) do
     t.string "first_name"
     t.string "last_name"
     t.string "nationality"
-    t.integer "age"
-    t.integer "height"
-    t.integer "weight"
-    t.string "position"
-    t.string "priority"
     t.bigint "team_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -34,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_03_15_213211) do
     t.string "name"
     t.string "coach"
     t.string "nationality"
-    t.string "age_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
