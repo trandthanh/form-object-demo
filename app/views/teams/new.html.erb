@@ -1,6 +1,8 @@
 <div class="container">
-  <%= simple_form_for @form do |f| %>
+  <%= simple_form_for @form, url: teams_path do |f| %>
     <h3>Team</h3>
+
+    <%= f.error_notification message: f.object.errors[:player].to_sentence if f.object.errors[:player].present? %>
 
     <div>
       <%= f.input :name %>
@@ -10,14 +12,14 @@
 
     <div>
       <h4>Player 1</h4>
-      <%= f.simple_fields_for :players do |p| %>
+      <%= f.simple_fields_for :players, Player.new do |p| %>
         <%= p.input :first_name %>
         <%= p.input :last_name %>
         <%= p.input :nationality %>
       <% end %>
 
       <h4>Player 2</h4>
-      <%= f.simple_fields_for :players do |p| %>
+      <%= f.simple_fields_for :players, Player.new do |p| %>
         <%= p.input :first_name %>
         <%= p.input :last_name %>
         <%= p.input :nationality %>

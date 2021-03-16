@@ -1,24 +1,39 @@
-class TeamForm < Reform::Form
-  property :name
-  property :coach
-  property :nationality
+class TeamForm
+  include ActiveModel::Model
+
+  attr_accessor :name, :coach, :nationality, :players
 
   validates :name, presence: true
   validates :coach, presence: true
-  validates :nationality, inclusion: { in: %w(french british vietnamese chinese russian martian austrian german scottish columbian breton american polish lebanese), message: "%{value} is not a valid nationality" }
+  validates :nationality, inclusion: { in: %w(French British Vietnamese Chinese Russian Martian Austrian German Scottish Columbian Breton American Polish Lebanese), message: "%{value} is not a valid nationality" }
 
-  collection :players, populate_if_empty: Player do
-    property :first_name
-    property :last_name
-    property :nationality
+  validate :citizen
 
-    validates :first_name, presence: true
-    validates :last_name, presence: true
+  # accepted_nested_attributes_for :players -> nested forms
+  def players_attributes=(attributes)
+    @players ||= []
+    attributes.each do |i, player_params|
+      @players << Player.new(player_params)
+    end
+  end
 
-    validate :fr_citizen?
+  def save
+    return false if invalid?
 
-    def fr_citizen?
-      errors.add(:nationality, "The player is not a French player") if nationality != "french"
+    ActiveRecord::Base.transaction do
+      team = Team.create!(name: name, coach: coach, nationality: nationality)
+      @players.each do |player|
+        player.team = team
+        player.save!
+      end
+    end
+  end
+
+  private
+
+  def citizen
+    @players.each do |player|
+      errors.add(:player, "#{player.first_name} #{player.last_name} has to be #{nationality}") if player.nationality != nationality
     end
   end
 end
