@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-5">
   <%= simple_form_for @form do |f| %>
     <h3>Team</h3>
 
@@ -7,6 +7,8 @@
       <%= f.input :coach %>
       <%= f.input :nationality %>
     </div>
+
+    <hr class="my-5">
 
     <div>
       <h4>Player 1</h4>
@@ -25,6 +27,6 @@
     </div>
 
 
-    <%= f.submit :Submit %>
+    <%= f.submit "Create my team", class: "btn btn-primary" %>
   <% end %>
 </div>
