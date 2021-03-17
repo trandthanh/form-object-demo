@@ -4,10 +4,7 @@ class TeamsController < ApplicationController
   end
 
   def new
-    # team = Team.new
-    # team.players.build
-    # @form = TeamForm.new(team)
-    @form = TeamForm.new(players: [Player.new, Player.new])
+    @form = TeamForm.new(players: [])
   end
 
   def create
@@ -17,20 +14,11 @@ class TeamsController < ApplicationController
     else
       render :new
     end
-    # team = Team.new
-    # @form = TeamForm.new(team)
-
-    # if @form.validate(team_params)
-    #   @form.save
-    #   redirect_to teams_path
-    # else
-    #   render :new
-    # end
   end
 
   private
 
   def team_form_params
-    params.require(:team_form).permit(:name, :coach, :nationality, players_attributes: [:_destroy, :id, :first_name, :last_name, :nationality])
+    params.require(:team_form).permit(:name, :coach, :nationality, players_attributes: [:first_name, :last_name, :nationality])
   end
 end
