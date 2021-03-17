@@ -1,6 +1,8 @@
 <div class="container py-5">
-  <%= simple_form_for @form do |f| %>
+  <%= simple_form_for @form, url: teams_path do |f| %>
     <h3>Team</h3>
+
+    <%= f.error_notification message: f.object.errors[:player].to_sentence if f.object.errors[:player].present? %>
 
     <div>
       <%= f.input :name %>
