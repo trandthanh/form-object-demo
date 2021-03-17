@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   def new
     team = Team.new
     team.players.build
+    team.players.build
     @form = TeamForm.new(team)
   end
 

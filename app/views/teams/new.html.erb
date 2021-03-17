@@ -11,18 +11,11 @@
     <hr class="my-5">
 
     <div>
-      <h4>Player 1</h4>
-      <%= f.simple_fields_for :players do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
-      <% end %>
-
-      <h4>Player 2</h4>
-      <%= f.simple_fields_for :players do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
+      <%= f.simple_fields_for :players do |player| %>
+        <h4>Player <%= player.index + 1 %></h4>
+        <%= player.input :first_name %>
+        <%= player.input :last_name %>
+        <%= player.input :nationality %>
       <% end %>
     </div>
 
