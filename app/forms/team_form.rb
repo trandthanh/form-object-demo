@@ -8,7 +8,8 @@ class TeamForm
     @players ||= []
     @players << @team.players.build
     @players << @team.players.build
-    # ...
+    # super here calls the initialize from ActiveModel::Model and will take
+    # the attributes of team depending on what is in our accessors
     super
   end
 
