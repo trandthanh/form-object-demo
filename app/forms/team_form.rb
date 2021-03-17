@@ -15,10 +15,11 @@ class TeamForm < Reform::Form
     validates :first_name, presence: true
     validates :last_name, presence: true
 
-    validate :fr_citizen?
+    validate :citizen?
 
-    def fr_citizen?
-      errors.add(:nationality, "The player is not a French player") if nationality != "french"
+    def citizen?
+      citizenship = "french"
+      errors.add(:nationality, "The player is not a #{citizenship.capitalize} player") if nationality != citizenship
     end
   end
 end
