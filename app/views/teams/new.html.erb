@@ -1,5 +1,6 @@
-<div class="container">
+<div class="container py-5">
   <%= simple_form_for @form, url: teams_path do |f| %>
+
     <h3>Team</h3>
 
     <%= f.error_notification message: f.object.errors[:player].to_sentence if f.object.errors[:player].present? %>
@@ -10,23 +11,17 @@
       <%= f.input :nationality %>
     </div>
 
-    <div>
-      <h4>Player 1</h4>
-      <%= f.simple_fields_for :players, Player.new do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
-      <% end %>
+    <hr class="my-5">
 
-      <h4>Player 2</h4>
-      <%= f.simple_fields_for :players, Player.new do |p| %>
-        <%= p.input :first_name %>
-        <%= p.input :last_name %>
-        <%= p.input :nationality %>
+    <div>
+      <%= f.simple_fields_for :players do |player| %>
+        <h4>Player <%= player.index + 1 %></h4>
+        <%= player.input :first_name %>
+        <%= player.input :last_name %>
+        <%= player.input :nationality %>
       <% end %>
     </div>
 
-
-    <%= f.submit :Submit %>
+    <%= f.submit "Create my team", class: "btn btn-primary" %>
   <% end %>
 </div>
