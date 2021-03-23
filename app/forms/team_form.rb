@@ -21,7 +21,10 @@ class TeamForm
 
   def citizen
     @players.each do |player_form|
-      errors.add(:player, "Player must be #{nationality}") unless nationality == player_form.nationality
+      if nationality == player_form.nationality
+        player_form.errors.add(:nationality, "Player must be #{nationality}")
+        errors.merge! player_form.errors
+      end
     end
   end
 

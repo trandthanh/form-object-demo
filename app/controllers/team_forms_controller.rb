@@ -1,6 +1,6 @@
 class TeamFormsController < ApplicationController
   def new
-    @form = TeamForm.new(players: [Player.new])
+    @form = TeamForm.new(players: [Player.new, Player.new])
   end
 
   def create

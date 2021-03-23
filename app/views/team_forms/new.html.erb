@@ -12,7 +12,7 @@
 
     <div>
       <h4>Player</h4>
-      <%= f.simple_fields_for :players, Player.new do |player_form| %>
+      <%= f.simple_fields_for :players, @form.players do |player_form| %>
         <%= player_form.input :first_name %>
         <%= player_form.input :last_name %>
         <%= player_form.input :nationality %>
